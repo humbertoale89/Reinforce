@@ -49,11 +49,11 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(expected);
             var api = handler.SetupApi<ISObjectGetDeleted>();
-            var result = await api.GetAsync(sObjectName, startDateAndTime, endDateAndTime, CancellationToken.None, "v44.0");
+            var result = await api.GetAsync(sObjectName, startDateAndTime, endDateAndTime, CancellationToken.None, "v56.0");
             result.Should().BeEquivalentTo(expected);
             var start = Uri.EscapeDataString(startDateAndTime.ToString("yyyy-MM-ddTHH:mm:ss+00:00"));
             var end = Uri.EscapeDataString(endDateAndTime.ToString("yyyy-MM-ddTHH:mm:ss+00:00"));
-            handler.ConfirmPath($"/services/data/v44.0/sobjects/{sObjectName}/deleted?start={start}&end={end}");
+            handler.ConfirmPath($"/services/data/v56.0/sobjects/{sObjectName}/deleted?start={start}&end={end}");
         }
     }
 }

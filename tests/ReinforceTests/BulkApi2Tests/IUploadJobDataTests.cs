@@ -26,8 +26,8 @@ namespace ReinforceTests.BulkApi2Tests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(null);
             var api = handler.SetupApi<IUploadJobData>();
-            await api.PutAsync(jobID, Encoding.ASCII.GetBytes(CSV), CancellationToken.None, "v44.0");
-            handler.ConfirmPath($"/services/data/v44.0/jobs/ingest/{jobID}/batches");
+            await api.PutAsync(jobID, Encoding.ASCII.GetBytes(CSV), CancellationToken.None, "v56.0");
+            handler.ConfirmPath($"/services/data/v56.0/jobs/ingest/{jobID}/batches");
         }
     }
 }

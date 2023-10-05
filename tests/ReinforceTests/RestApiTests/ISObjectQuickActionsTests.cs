@@ -27,8 +27,8 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(null);
             var api = handler.SetupApi<ISObjectQuickActions>();
-            await api.GetAsync(sObjectName, actionName, CancellationToken.None, "v44.0");
-            handler.ConfirmPath($"/services/data/v44.0/sobjects/{sObjectName}/quickActions/{actionName}");
+            await api.GetAsync(sObjectName, actionName, CancellationToken.None, "v56.0");
+            handler.ConfirmPath($"/services/data/v56.0/sobjects/{sObjectName}/quickActions/{actionName}");
         }
 
         [Theory, AutoData]
@@ -45,8 +45,8 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(null);
             var api = handler.SetupApi<ISObjectQuickActions>();
-            await api.DescribeAsync(sObjectName, actionName, CancellationToken.None, "v44.0");
-            handler.ConfirmPath($"/services/data/v44.0/sobjects/{sObjectName}/quickActions/{actionName}/describe");
+            await api.DescribeAsync(sObjectName, actionName, CancellationToken.None, "v56.0");
+            handler.ConfirmPath($"/services/data/v56.0/sobjects/{sObjectName}/quickActions/{actionName}/describe");
         }
 
         [Theory, AutoData]
@@ -54,8 +54,8 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(null);
             var api = handler.SetupApi<ISObjectQuickActions>();
-            await api.DefaultValuesAsync(sObjectName, actionName, CancellationToken.None, "v44.0");
-            handler.ConfirmPath($"/services/data/v44.0/sobjects/{sObjectName}/quickActions/{actionName}/defaultValues");
+            await api.DefaultValuesAsync(sObjectName, actionName, CancellationToken.None, "v56.0");
+            handler.ConfirmPath($"/services/data/v56.0/sobjects/{sObjectName}/quickActions/{actionName}/defaultValues");
         }
 
         [Theory, AutoData]
@@ -63,8 +63,8 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(null);
             var api = handler.SetupApi<ISObjectQuickActions>();
-            await api.DefaultValuesAsync(sObjectName, actionName, contextId, CancellationToken.None, "v44.0");
-            handler.ConfirmPath($"/services/data/v44.0/sobjects/{sObjectName}/quickActions/{actionName}/defaultValues/{contextId}");
+            await api.DefaultValuesAsync(sObjectName, actionName, contextId, CancellationToken.None, "v56.0");
+            handler.ConfirmPath($"/services/data/v56.0/sobjects/{sObjectName}/quickActions/{actionName}/defaultValues/{contextId}");
         }
     }
 }

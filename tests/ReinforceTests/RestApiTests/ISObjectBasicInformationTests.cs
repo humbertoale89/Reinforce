@@ -16,9 +16,9 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(expected);
             var api = handler.SetupApi<ISObjectBasicInformation>();
-            var result = await api.GetAsync(sObjectName, CancellationToken.None, "v44.0");
+            var result = await api.GetAsync(sObjectName, CancellationToken.None, "v56.0");
             result.Should().BeEquivalentTo(expected);
-            handler.ConfirmPath($"/services/data/v44.0/sobjects/{sObjectName}");
+            handler.ConfirmPath($"/services/data/v56.0/sobjects/{sObjectName}");
         }
 
         [Theory, AutoData]
@@ -26,9 +26,9 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(expected);
             var api = handler.SetupApi<ISObjectBasicInformation>();
-            var result = await api.PostAsync(sObjectName, sObject, CancellationToken.None, "v44.0");
+            var result = await api.PostAsync(sObjectName, sObject, CancellationToken.None, "v56.0");
             result.Should().BeEquivalentTo(expected);
-            handler.ConfirmPath($"/services/data/v44.0/sobjects/{sObjectName}");
+            handler.ConfirmPath($"/services/data/v56.0/sobjects/{sObjectName}");
         }
     }
 }

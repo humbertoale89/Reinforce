@@ -26,9 +26,9 @@ namespace ReinforceTests.BulkApi2Tests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(expected);
             var api = handler.SetupApi<ICreateAJob>();
-            var result = await api.PostAsync(body, CancellationToken.None, "v44.0");
+            var result = await api.PostAsync(body, CancellationToken.None, "v56.0");
             result.Should().BeEquivalentTo(expected);
-            handler.ConfirmPath($"/services/data/v44.0/jobs/ingest");
+            handler.ConfirmPath($"/services/data/v56.0/jobs/ingest");
         }
     }
 }

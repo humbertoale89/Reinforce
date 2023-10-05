@@ -6,6 +6,7 @@ using Reinforce.RestApi;
 using Reinforce.Constants;
 using Xunit;
 using Reinforce.RestApi.Models;
+using System.Collections.Generic;
 
 namespace ReinforceTests.RestApiTests
 {
@@ -22,7 +23,7 @@ namespace ReinforceTests.RestApiTests
         }
 
         [Theory]
-        [InlineAutoData("v35.0")]
+        [InlineAutoData("v56.0")]
         public async Task IComposite_PostAsync_Args(string apiVersion, CompositeResponse<dynamic> expected, Composite request)
         {
             using var handler = MockHttpMessageHandler.SetupHandler(expected);
@@ -43,7 +44,7 @@ namespace ReinforceTests.RestApiTests
         }
 
         [Theory]
-        [InlineAutoData("v35.0")]
+        [InlineAutoData("v56.0")]
         public async Task IComposite_PostAsync_T_Args(string apiVersion, CompositeResponse<string> expected, Composite request)
         {
             using var handler = MockHttpMessageHandler.SetupHandler(expected);
@@ -51,6 +52,16 @@ namespace ReinforceTests.RestApiTests
             var result = await api.PostAsync<string>(request, CancellationToken.None, apiVersion);
             result.Should().BeEquivalentTo(expected);
             handler.ConfirmPath($"/services/data/{apiVersion}/composite");
+        }
+
+        [Theory, AutoData]
+        public async Task IComposite_PostTreeAsync(CompositeTreeResponse expected, string sObjectName, IDictionary<string, string> sObject)
+        {
+            using var handler = MockHttpMessageHandler.SetupHandler(expected);
+            var api = handler.SetupApi<IComposite>();
+            var result = await api.PostTreeAsync(sObjectName, sObject, CancellationToken.None, Api.Version);
+            result.Should().BeEquivalentTo(expected);
+            handler.ConfirmPath($"/services/data/{Api.Version}/composite/tree/{sObjectName}");
         }
     }
 }

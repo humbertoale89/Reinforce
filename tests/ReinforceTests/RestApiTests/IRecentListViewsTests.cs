@@ -26,9 +26,9 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(expected);
             var api = handler.SetupApi<IRecentListViews>();
-            var result = await api.GetAsync(sobjectType, CancellationToken.None, "v44.0");
+            var result = await api.GetAsync(sobjectType, CancellationToken.None, "v56.0");
             result.Should().BeEquivalentTo(expected);
-            handler.ConfirmPath($"/services/data/v44.0/sobjects/{sobjectType}/listviews/recent");
+            handler.ConfirmPath($"/services/data/v56.0/sobjects/{sobjectType}/listviews/recent");
         }
     }
 }

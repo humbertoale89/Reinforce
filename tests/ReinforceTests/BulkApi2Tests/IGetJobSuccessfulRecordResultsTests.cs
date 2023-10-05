@@ -27,9 +27,9 @@ namespace ReinforceTests.BulkApi2Tests
         {
             using var handler = MockHttpMessageHandler.SetupRawHandler(CSV);
             var api = handler.SetupApi<IGetJobSuccessfulRecordResults>();
-            var result = await api.GetAsync(jobID, CancellationToken.None, "v44.0");
+            var result = await api.GetAsync(jobID, CancellationToken.None, "v56.0");
             result.Should().BeEquivalentTo(CSV);
-            handler.ConfirmPath($"/services/data/v44.0/jobs/ingest/{jobID}/successfulResults");
+            handler.ConfirmPath($"/services/data/v56.0/jobs/ingest/{jobID}/successfulResults");
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Reinforce.RestApi
     /// subrequest’s body, you specify a reference ID that maps to the subrequest’s response. You can then refer to the ID in the 
     /// url or body fields of later subrequests by using a JavaScript-like reference notation. 
     /// https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_composite_composite.htm
+    /// https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_composite_sobject_tree.htm
     /// </summary>
     public interface IComposite
     {
@@ -34,5 +35,13 @@ namespace Reinforce.RestApi
             [Path] string version = Api.Version
         );
 
+        [Post("/services/data/{version}/composite/tree/{sObjectName}")]
+        [Header("Authorization", "Bearer")]
+        Task<CompositeTreeResponse> PostTreeAsync<TSObject>(
+            [Path] string sObjectName,
+            [Body] TSObject sObject,
+            CancellationToken cancellationToken = default,
+            [Path] string version = Api.Version
+        );
     }
 }

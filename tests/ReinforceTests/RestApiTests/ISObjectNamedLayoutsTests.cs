@@ -13,8 +13,8 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(null);
             var api = handler.SetupApi<ISObjectNamedLayouts>();
-            await api.GetAsync(sObjectName, layoutName, CancellationToken.None, "v44.0");
-            handler.ConfirmPath($"/services/data/v44.0/sobjects/{sObjectName}/describe/namedLayouts/{layoutName}");
+            await api.GetAsync(sObjectName, layoutName, CancellationToken.None, "v56.0");
+            handler.ConfirmPath($"/services/data/v56.0/sobjects/{sObjectName}/describe/namedLayouts/{layoutName}");
         }
     }
 }

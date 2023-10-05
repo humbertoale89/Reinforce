@@ -26,9 +26,9 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(expected);
             var api = handler.SetupApi<IAppMenu>();
-            var result = await api.GetAppSwitcherAsync(CancellationToken.None, "v44.0");
+            var result = await api.GetAppSwitcherAsync(CancellationToken.None, "v56.0");
             result.Should().BeEquivalentTo(expected);
-            handler.ConfirmPath($"/services/data/v44.0/appMenu/AppSwitcher");
+            handler.ConfirmPath($"/services/data/v56.0/appMenu/AppSwitcher");
         }
 
         [Theory, AutoData]
@@ -46,9 +46,9 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(expected);
             var api = handler.SetupApi<IAppMenu>();
-            var result = await api.GetSalesforce1Async(CancellationToken.None, "v44.0");
+            var result = await api.GetSalesforce1Async(CancellationToken.None, "v56.0");
             result.Should().BeEquivalentTo(expected);
-            handler.ConfirmPath($"/services/data/v44.0/appMenu/Salesforce1");
+            handler.ConfirmPath($"/services/data/v56.0/appMenu/Salesforce1");
         }
     }
 }

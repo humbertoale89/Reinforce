@@ -31,9 +31,9 @@ namespace ReinforceTests.RestApiTests
         {
             using var handler = MockHttpMessageHandler.SetupHandler(expected);
             var api = handler.SetupApi<ISearch>();
-            var result = await api.GetAsync<string>(q, CancellationToken.None, "v44.0");
+            var result = await api.GetAsync<string>(q, CancellationToken.None, "v56.0");
             result.Should().BeEquivalentTo(expected);
-            handler.ConfirmPath($"/services/data/v44.0/search?q=", q);
+            handler.ConfirmPath($"/services/data/v56.0/search?q=", q);
         }
     }
 }
