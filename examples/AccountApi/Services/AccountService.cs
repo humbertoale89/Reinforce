@@ -49,6 +49,12 @@ namespace AccountApi.Services
             var response = await _query.GetAsync<Account>("Select Id, Name From Account", cancellationToken);
             return response?.Records ?? Enumerable.Empty<Account>();
         }
+        
+        public async Task<IEnumerable<Account>> ReadBatchAsync(int batchSize, CancellationToken cancellationToken)
+        {
+            var response = await _query.GetBatchAsync<Account>("Select Id, Name From Account", batchSize, cancellationToken);
+            return response?.Records ?? Enumerable.Empty<Account>();
+        }
 
         public async Task<Account> ReadAsync(string id, CancellationToken cancellationToken)
         {

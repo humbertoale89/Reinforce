@@ -24,6 +24,12 @@ namespace AccountApi.Controllers
         {
             return _accountService.ReadAsync(cancellationToken);
         }
+        
+        [HttpGet("batch/{batchSize}")]
+        public Task<IEnumerable<Account>> GetBatchAsync(int batchSize, CancellationToken cancellationToken)
+        {
+            return _accountService.ReadBatchAsync(batchSize, cancellationToken);
+        }
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Account), 200)]
