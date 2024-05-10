@@ -28,6 +28,16 @@ namespace Reinforce.RestApi
             CancellationToken cancellationToken = default,
             [Path] string version = Api.Version
         );
+        
+        [Get("/services/data/{version}/query")]
+        [Header("Authorization", "Bearer")]
+        Task<QueryResponse<TSObject>> GetBatchAsync<TSObject>(
+            [Query] string q,
+            [Header("Sforce-Query-Options", Format="batchSize={0}")] int batchSize,
+            CancellationToken cancellationToken = default,
+            [Path] string version = Api.Version
+        );
+
 
         [Get("/services/data/{version}/query/{queryIdentifier}")]
         [Header("Authorization", "Bearer")]
